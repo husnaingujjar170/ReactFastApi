@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-
 const Dashboard = () => {
   const [task, setTask] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -10,14 +9,12 @@ const Dashboard = () => {
   const [editDueDate, setEditDueDate] = useState('');
   const [filter, setFilter] = useState('all');
   const { user, logout } = useContext(AuthContext);
-
   useEffect(() => {
     if (user && user.username) {
       const storedTasks = JSON.parse(localStorage.getItem(`tasks_${user.username}`) || '[]');
       setTasks(storedTasks);
     }
   }, [user]);
-
   const handleAddTask = (e) => {
     e.preventDefault();
     if (task.trim()) {
@@ -29,19 +26,16 @@ const Dashboard = () => {
       setDueDate('');
     }
   };
-
   const handleDeleteTask = (id) => {
     const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
     localStorage.setItem(`tasks_${user.username}`, JSON.stringify(updatedTasks));
   };
-
   const handleEditTask = (task) => {
     setEditingTaskId(task.id);
     setEditText(task.text);
     setEditDueDate(task.dueDate || '');
   };
-
   const handleSaveEdit = (id) => {
     if (editText.trim()) {
       const updatedTasks = tasks.map((task) =>
@@ -54,13 +48,11 @@ const Dashboard = () => {
     setEditText('');
     setEditDueDate('');
   };
-
   const handleCancelEdit = () => {
     setEditingTaskId(null);
     setEditText('');
     setEditDueDate('');
   };
-
   const handleToggleComplete = (id) => {
     const updatedTasks = tasks.map((task) =>
       task.id === id ? { ...task, completed: !task.completed } : task
@@ -68,24 +60,20 @@ const Dashboard = () => {
     setTasks(updatedTasks);
     localStorage.setItem(`tasks_${user.username}`, JSON.stringify(updatedTasks));
   };
-
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'active') return !task.completed;
     if (filter === 'completed') return task.completed;
     return true;
   });
-
   const isOverdue = (dueDate) => {
     if (!dueDate) return false;
     const today = new Date();
     const taskDate = new Date(dueDate);
     return taskDate < today && !task.completed;
   };
-
   if (!user) {
     return <div>Loading...</div>;
   }
-
   return (
     <div className="dashboard-container container">
       <div className="dashboard-header">
@@ -202,11 +190,7 @@ const Dashboard = () => {
           </ul>
         )}
       </div>
-      <footer className="dashboard-footer">
-        <p>© 2025 Task Management Application. All rights reserved.</p>
-      </footer>
     </div>
   );
 };
-
 export default Dashboard;

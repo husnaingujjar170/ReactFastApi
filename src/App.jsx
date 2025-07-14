@@ -1,3 +1,4 @@
+// App.jsx - Updated version
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import Home from './pages/Home';
@@ -11,12 +12,10 @@ import { useContext } from 'react';
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const handleLogout = () => {
     logout();
     navigate('/signin');
   };
-
   return (
     <nav className="navbar">
       <div className="container">
@@ -44,19 +43,24 @@ function App() {
     <AuthProvider>
       <div className="app-container">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
+        <footer className="app-footer">
+          <p>© 2025 Task Management Application. All rights reserved.</p>
+        </footer>
       </div>
     </AuthProvider>
   );
