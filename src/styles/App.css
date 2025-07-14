@@ -108,16 +108,22 @@ body {
   font-weight: 500;
   cursor: pointer;
   border: none;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .primary-btn {
   background-color: #2563eb;
   color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .primary-btn:hover {
   background-color: #1e40af;
+  box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
 }
 
 .secondary-btn {
@@ -130,23 +136,25 @@ body {
 }
 
 .form-container {
-  max-width: 400px;
-  margin: 4rem auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 6rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a3bffa 70%);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid #a3bffa;
 }
 
 .form-container h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #1f2937;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   text-align: center;
+  font-weight: 700;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .form-group label {
@@ -154,50 +162,68 @@ body {
   font-size: 1.1rem;
   color: #1f2937;
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .form-group input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.7rem;
   font-size: 1rem;
   border: 1px solid #d1d5db;
-  border-radius: 5px;
+  border-radius: 6px;
   box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 .form-group input:focus {
   outline: none;
   border-color: #2563eb;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
 }
 
 .form-container button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.9rem;
   font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.form-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
 }
 
 .form-container p {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: #4b5563;
+  font-size: 0.95rem;
 }
 
 .form-container a {
   color: #2563eb;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .form-container a:hover {
   text-decoration: underline;
+  color: #1e40af;
 }
 
 .error {
   color: #dc2626;
   text-align: center;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #fee2e2;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
 }
 
 .dashboard-container {
@@ -207,7 +233,10 @@ body {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  flex: 1;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem; /* Space before footer */
 }
 
 .dashboard-header {
@@ -237,7 +266,8 @@ body {
 
 .task-list {
   margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
+  flex: 1 0 auto;
 }
 
 .task-list p {
@@ -367,19 +397,19 @@ body {
   background-color: #1e40af;
 }
 
-.dashboard-footer {
-  position: sticky;
-  bottom: 0;
+.app-footer {
   width: 100%;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: bold;
   background-color: #2563eb;
   border-top: 3px solid #1e40af;
-  z-index: 1000;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
+  margin-top: auto;
+  flex-shrink: 0;
+  position: relative; /* Ensures no overlap with forms */
 }
 
 @media (max-width: 768px) {
@@ -402,8 +432,21 @@ body {
   }
 
   .form-container {
-    margin: 2rem auto;
+    margin: 3rem auto;
     padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .form-container h2 {
+    font-size: 2rem;
+  }
+
+  .form-group input {
+    padding: 0.6rem;
+  }
+
+  .form-container button {
+    padding: 0.7rem;
   }
 
   .task-form .form-group {
@@ -436,8 +479,8 @@ body {
     align-items: center;
   }
 
-  .dashboard-footer {
-    padding: 1.5rem;
+  .app-footer {
+    padding: 1rem;
     font-size: 1rem;
   }
 }
