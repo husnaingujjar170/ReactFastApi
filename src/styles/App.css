@@ -1,0 +1,428 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8fafc;
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #2563eb;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links a, .nav-links button {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-links a:hover, .nav-links button:hover {
+  text-decoration: underline;
+}
+
+.nav-links .signup-btn {
+  background-color: #1e40af;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+}
+
+.nav-links .signup-btn:hover {
+  background-color: #1e3a8a;
+  text-decoration: none;
+}
+
+.nav-links .logout-btn {
+  background-color: #dc2626;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+}
+
+.nav-links .logout-btn:hover {
+  background-color: #b91c1c;
+  text-decoration: none;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero-section h2 {
+  font-size: 2.5rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  color: #4b5563;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.primary-btn {
+  background-color: #2563eb;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #1e40af;
+}
+
+.secondary-btn {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.secondary-btn:hover {
+  background-color: #d1d5db;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+}
+
+.form-container button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.form-container p {
+  text-align: center;
+  margin-top: 1rem;
+  color: #4b5563;
+}
+
+.form-container a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #dc2626;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.dashboard-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+  font-size: 2rem;
+  color: #1f2937;
+}
+
+.task-form .form-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+}
+
+.task-list {
+  margin-top: 2rem;
+}
+
+.task-list p {
+  color: #4b5563;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.task-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.task-item.completed {
+  background-color: #f1f5f9;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.task-item.overdue .due-date {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.task-content input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+}
+
+.task-content span {
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.due-date {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-left: 1rem;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-form {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.edit-form input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+}
+
+.small-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.edit-btn {
+  background-color: #eab308;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #ca8a04;
+}
+
+.delete-btn {
+  background-color: #dc2626;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.filter-btn.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.filter-btn:hover {
+  background-color: #d1d5db;
+}
+
+.filter-btn.active:hover {
+  background-color: #1e40af;
+}
+
+.dashboard-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-section h2 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .form-container {
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+
+  .task-form .form-group {
+    flex-direction: column;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .edit-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .edit-form input {
+    width: 100%;
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
