@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -14,42 +14,39 @@ const SignUp = () => {
     e.preventDefault();
     const success = signup(username, email, password);
     if (success) {
-      navigate('/signin');
+      navigate('/dashboard');
     } else {
-      setError('Username already exists. Please choose another.');
+      setError('Username already exists');
     }
   };
 
   return (
-    <div className="form-container container">
+    <div className="form-container">
       <h2>Sign Up</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label>Username</label>
           <input
             type="text"
-            id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label>Email</label>
           <input
             type="email"
-            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label>Password</label>
           <input
             type="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -57,9 +54,7 @@ const SignUp = () => {
         </div>
         <button type="submit" className="btn primary-btn">Sign Up</button>
       </form>
-      <p>
-        Already have an account? <a href="/signin">Sign In</a>
-      </p>
+      <p>Already have an account? <a href="/signin">Sign In</a></p>
     </div>
   );
 };

@@ -6,6 +6,9 @@ body {
 
 .app-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .navbar {
@@ -204,6 +207,7 @@ body {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
 .dashboard-header {
@@ -233,6 +237,7 @@ body {
 
 .task-list {
   margin-top: 2rem;
+  margin-bottom: 5rem;
 }
 
 .task-list p {
@@ -363,15 +368,20 @@ body {
 }
 
 .dashboard-footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
   text-align: center;
-  margin-top: 2rem;
-  padding: 1rem;
-  color: #4b5563;
-  font-size: 0.9rem;
-  border-top: 1px solid #e5e7eb;
+  padding: 2rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #2563eb;
+  border-top: 3px solid #1e40af;
+  z-index: 1000;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .navbar .container {
     flex-direction: column;
@@ -424,5 +434,10 @@ body {
   .filter-buttons {
     flex-direction: column;
     align-items: center;
+  }
+
+  .dashboard-footer {
+    padding: 1.5rem;
+    font-size: 1rem;
   }
 }
