@@ -1,5 +1,7 @@
+"use client"
+
 import { Link } from "react-router-dom"
-import { useState, useContext, useEffect } from "react" 
+import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 
@@ -13,7 +15,7 @@ const SignUp = () => {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { signup, error: authError, user, loading: authLoading } = useContext(AuthContext) 
+  const { signup, error: authError, user, loading: authLoading } = useContext(AuthContext)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -38,8 +40,18 @@ const SignUp = () => {
 
     if (!formData.password) {
       newErrors.password = "Password is required"
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters"
+    } else if (formData.password.length < 8) {
+      // Increased minimum length for better security
+      newErrors.password = "Password must be at least 8 characters"
+    } else if (!/[A-Z]/.test(formData.password)) {
+      newErrors.password = "Password must contain at least one uppercase letter"
+    } else if (!/[a-z]/.test(formData.password)) {
+      newErrors.password = "Password must contain at least one lowercase letter"
+    } else if (!/[0-9]/.test(formData.password)) {
+      newErrors.password = "Password must contain at least one number"
+    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+      // Check for special characters
+      newErrors.password = 'Password must contain at least one special character (!@#$%^&*(),.?":{}|<>)'
     }
 
     if (formData.password !== formData.confirmPassword) {
@@ -74,6 +86,7 @@ const SignUp = () => {
     try {
       const success = await signup(formData.username, formData.email, formData.password)
       if (success) {
+        // Redirection is now handled by useEffect after successful signup
       }
     } catch (error) {
       console.error("Signup error:", error)
@@ -81,6 +94,7 @@ const SignUp = () => {
       setIsSubmitting(false)
     }
   }
+
   if (authLoading) {
     return (
       <div className="loading-container">
