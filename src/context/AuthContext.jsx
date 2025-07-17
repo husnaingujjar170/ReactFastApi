@@ -1,6 +1,8 @@
 "use client"
 
 import { createContext, useState, useEffect, useContext } from "react"
+// API base URL for backend
+const API_BASE_URL = "https://taskmanagmentbackend-fastapi.onrender.com"
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -109,7 +111,7 @@ export const AuthProvider = ({ children }) => {
   const registerUserInBackend = async (email, password, username) => {
     try {
       console.log("AuthContext: Calling backend /auth/signup")
-      const response = await fetch("http://localhost:8000/auth/signup", {
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -131,7 +133,7 @@ export const AuthProvider = ({ children }) => {
   const verifyUserInBackend = async (email, password) => {
     try {
       console.log("AuthContext: Calling backend /auth/signin")
-      const response = await fetch("http://localhost:8000/auth/signin", {
+      const response = await fetch(`${API_BASE_URL}/auth/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -163,7 +165,7 @@ export const AuthProvider = ({ children }) => {
         throw new Error("User not authenticated. Please sign in.")
       }
 
-      const response = await fetch(`http://localhost:8000${url}`, {
+      const response = await fetch(`${API_BASE_URL}${url}`, {
         ...options,
         headers: {
           "Content-Type": "application/json",

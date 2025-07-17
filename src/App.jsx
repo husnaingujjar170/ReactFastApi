@@ -41,7 +41,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="container">
-        <Link to="/" className="logo">
+        <Link to={user ? "/dashboard" : "/"} className="logo">
           Task Management Application
         </Link>
 
